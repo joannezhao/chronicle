@@ -1,18 +1,20 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme and one
- * of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query,
- * e.g., it puts together the home page when no home.php file exists.
- *
- * @link http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
+	 * The main template file
+	 *
+	 * This is the most generic template file in a WordPress theme and one
+	 * of the two required files for a theme (the other being style.css).
+	 * It is used to display a page when nothing more specific matches a query,
+	 * e.g., it puts together the home page when no home.php file exists.
+	 *
+	 * @link http://codex.wordpress.org/Template_Hierarchy
+	 *
+	 * @package WordPress
+	 * @subpackage Twenty_Fourteen
+	 * @since Twenty Fourteen 1.0
+*/
+
+	require 'packages/vendor/autoload.php';
 
 	get_header();
 ?>
@@ -36,13 +38,6 @@
 	    	if ($loop->have_posts()):
 	    		$loop->the_post();
 	    		$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'featured');
-	    		$the_categories = get_the_category();
-	    		foreach ($the_categories as $key => $value) {
-	    			if ($value->name == "Featured") {
-	    				unset($the_categories[$key]);
-	    			}
-				}
-				$the_categories = array_values($the_categories);
 		?>
 
 			<div class="divider">
@@ -56,7 +51,7 @@
 		 	  </div>
 		 	  <div class="featured-article">
 		 	  	
-		 	  	<div class="article-category"> <?php echo (count($the_categories) ? strtoupper($the_categories[0]->name) : "CURRENT"); ?> </div>
+		 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
 				<div class="article-author">BY <?php echo strtoupper(get_the_author()); ?> </div>
 				<div class="article-excerpt"> 
@@ -67,16 +62,63 @@
 		 	</div>
 
 	     <?php endif; ?>
-	 </div>
+	</div>
 
-	 <div id="content-right">
+	<div id="content-right">
 
-	   <!-- Most viewed articles -->
-	   <div class="most-viewed-wrapper">
-	     Hello
-	   </div>
+	  <!-- Most viewed articles -->
+	  <div class="divider" style="margin-top:0;">
+	    <div class="divider-text-center"><div class="divider-text">Popular</div></div>
+	    <div class="divider-border"></div>
+	  </div>
 
-	 </div>
+	  <div class="popular-wrapper">
+	    <?php
+	     	$loop = get_popular_articles(4);
+
+	    	while ($loop->have_posts()):
+	    		$loop->the_post();
+	    	?>
+
+	    	  <div class="popular-article">
+		 	  	
+		 	 	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
+				<div class="article-title"> <?php the_title(); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_the_author()); ?> </div>
+
+		 	  </div>
+
+		<?php endwhile; ?>
+
+	  </div>
+
+	  <!-- Tweets -->
+	  <div class="divider">
+	    <div class="divider-text-center"><div class="divider-text">Tweets</div></div>
+	    <div class="divider-border"></div>
+	  </div>
+
+	  <div class="tweet-wrapper">
+
+	  	<?php
+
+	  		$instance = array();
+			$instance['title'] = 'Tweets';
+			$instance['consumerkey'] = '3CxxaEkzUxsFe1TPsPqknL2vE';
+			$instance['consumersecret'] = 'G7AwY47zLUG7SBlrhvvGrJhDYUX6pKaOXELqfhdZxSx5UOTzOq';
+			$instance['accesstoken'] = '2770409635-JZn74iNTlyqvPJu51BhVeUwF48fDJYXoxt51pVr';
+			$instance['accesstokensecret'] = 'a01WCjOSwASNuc8JcwUpHCqKooxtoTkIUDsR969867NMR';
+			$instance['cachetime'] = '2';
+			$instance['username'] = 'dartmouth';
+			$instance['tweetstoshow'] = '3';
+			$instance['excludereplies'] = 'true';
+
+	  		the_widget('tp_widget_recent_tweets', $instance);
+	  		
+	  	?>
+
+	  </div>
+	</div>
 
 
  	<!-- Current issue -->

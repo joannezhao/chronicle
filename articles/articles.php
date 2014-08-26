@@ -7,9 +7,81 @@
 */
     
 	defined('ABSPATH') or die("No script kiddies please!");
-	add_action( 'init', 'create_article_post_type' );
+	add_action( 'init', 'create_article_post_type');
 	add_action('init', 'create_issue_taxonomy');
+	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+	add_action( 'wp_head', 'track_article_views');
 
+
+	// Functions for article view counter 
+	function set_article_views($postID) {
+	    $count_key = 'article_view_count';
+	    $count = get_post_meta($postID, $count_key, true);
+	    
+	    if ($count == '') {
+	        $count = 0;
+	        delete_post_meta($postID, $count_key);
+	        add_post_meta($postID, $count_key, '0');
+	    }
+	    else {
+	        $count++;
+	        update_post_meta($postID, $count_key, $count);
+	    }
+	}
+
+	function track_article_views ($postID) {
+	    if (!is_single()) return;
+	    if (empty($postID)) {
+	        global $post;
+	        $postID = $post->ID;
+	    }
+	    set_article_views($postID);
+	}
+
+	function get_article_views($postID) {
+		if (empty($postID)) {
+	    	if (!empty($post)) {
+		        global $post;
+		        $postID = $post->ID;
+		    }
+		    else return;
+	    }
+
+	    $count_key = 'article_view_count';
+	    $count = get_post_meta($postID, $count_key, true);
+
+	    if ($count == '') {
+	        delete_post_meta($postID, $count_key);
+	        add_post_meta($postID, $count_key, '0');
+	        return 0;
+	    }
+	    return $count;
+	}
+
+	function get_popular_articles($count=5) {
+		$args = array(
+			'post_type' => 'article',
+			'posts_per_page' => $count,
+			'meta_key' => 'article_view_count',
+			'orderby' => 'meta_value_num',
+			'order' => 'DESC',
+			'date_query' => array(
+				'after' => '-1 months'
+			),
+			'inclusive' => true,
+		);
+
+		$loop = new WP_Query($args);
+		if ($loop->post_count < 5) {
+			$args['date_query']['after'] = '-2 months';
+			$loop = new WP_Query($args);
+		}
+
+		return $loop;
+	}
+
+
+	// Functions to create custom post types and taxonomoies
 	function create_article_post_type() {
 		register_post_type('article',
 			array(

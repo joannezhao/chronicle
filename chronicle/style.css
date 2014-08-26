@@ -50,7 +50,6 @@ body {
 	background: none;
 }
 
-
 /* Removes sidebar - don't ask how */
 site,
 .site-header {
@@ -155,10 +154,25 @@ site,
 	color: #999;
 	background-color: #FFF;
 }
+.divider-text-center {
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+.divider-text-center .divider-text {
+	float: none;
+	display: inline-block;
+}
 .divider-border {
 	width: 100%;
 	margin-top: 15px;
 	border-bottom: solid 1px #CCC;
+}
+
+#content-right .divider {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	width: 220px;
 }
 
 
@@ -484,12 +498,98 @@ site,
 /*
 /****************************/
 
-.most-viewed-wrapper {
+.popular-wrapper {
+	float: left;
 	width: 220px;
-	height: 300px;
 	margin-left: 20px;
 	border-top: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
 	background-color: #F0F0F0;
 	box-shadow: inset 0px 11px 8px -10px #DDD;
+}
+.popular-article {
+	width: 200px;
+	margin-left: 10px;
+	padding: 10px 0;
+	border-bottom: solid 1px #CCC;
+}
+.popular-article:last-of-type {
+	border-bottom: none;
+}
+.popular-article .article-category {
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	color: #6b8a1c;
+}
+.popular-article .article-title {
+	width: 100%;
+	margin-top: 2px;
+	font-family: "Lora", serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #333;
+}
+.popular-article .article-author {
+	margin-top: 2px;
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 10px;
+	font-weight: 900;
+	letter-spacing: 1px;
+	color: #333;
+}
+
+
+/****************************
+/*
+/*	Tweet styles
+/*
+/****************************/
+
+.tweet-wrapper {
+	float: left;
+	width: 220px;
+	margin-left: 20px;
+	border-top: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+	background-color: #F0F0F0;
+	box-shadow: inset 0px 11px 8px -10px #DDD;
+}
+
+.widget_tp_widget_recent_tweets h2.widgettitle {
+	display: none;
+}
+
+.tp_recent_tweets li {
+	margin: 0 10px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: solid 1px #CCC;
+	background-position: 0px 15px;
+	font-family: "Lato", sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	color: #333;
+}
+.tp_recent_tweets li:last-of-type {
+	border-bottom: none;
+}
+.tp_recent_tweets li a {
+	font-weight: 500;
+	color: #6B8A1C;
+}
+.tp_recent_tweets li a:hover {
+	color: #6B8A1C;
+	text-decoration: underline;
+}
+.tp_recent_tweets .twitter_time {
+	font-style: italic;
+	font-weight: 300;
+	color: #999;
+}
+.tp_recent_tweets .twitter_time:hover {
+	color: #999;
 }

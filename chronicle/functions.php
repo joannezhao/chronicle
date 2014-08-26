@@ -7,6 +7,9 @@ function remove_wp_nodes() {
 	global $wp_admin_bar;   
     $wp_admin_bar->remove_node('new-post');
 }
+function register_recent_tweet_widget() {
+	register_widget('tp_widget_recent_tweets');
+}
 
 add_action('admin_bar_menu', 'remove_wp_nodes', 999);
 add_action('admin_menu', 'remove_menus');

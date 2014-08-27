@@ -12,14 +12,25 @@
 
 		</div><!-- #main -->
 
-		<footer id="colophon" class="site-footer" role="contentinfo">
-
-			<div class="site-info">
-				<?php do_action( 'twentyfourteen_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentyfourteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfourteen' ), 'WordPress' ); ?></a>
+		<footer>
+		  <div class="page-center">
+			<div id="footer-blurb">
+				The Dartmouth Chronicle is a magazine featuring content written by students,
+				professors, and alumni that bring the Dartmouth community together and highlight
+				the issues of the day
 			</div>
-		
-		</footer>
+			<div class="footer-list">
+				<a href="/">Item</a>
+				<a href="/">Test</a>
+				<a href="/">Item</a>
+			</div>
+			<div class="footer-list">
+				<a href="/">Twitter</a>
+				<a href="/">Vimeo</a>
+				<a href="/">Facebook</a>
+			</div>
+		  </div>
+		</footer
 	
 	</div><!-- #page -->
 

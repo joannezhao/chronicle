@@ -113,7 +113,7 @@
 				<div class="slide-info ' . ($first ? 'active' : '') . '" data-id="' . get_the_ID() . '">
 			      <div class="article-category">' . get_the_first_category() . '</div>
 			      <div class="article-title">' . get_the_title() . '</div>
-			      <div class="article-author">BY ' . strtoupper(get_the_author()) . '</div>
+			      <div class="article-author">BY ' . strtoupper(get_author(get_the_ID())) . '</div>
 			      <div class="article-excerpt">' . 
 			        (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()) . '
 			      </div>

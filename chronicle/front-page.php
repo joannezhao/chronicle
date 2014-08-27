@@ -53,7 +53,7 @@
 		 	  	
 		 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
-				<div class="article-author">BY <?php echo strtoupper(get_the_author()); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
 				<div class="article-excerpt"> 
 					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
 				</div>
@@ -84,7 +84,7 @@
 		 	  	
 		 	 	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
-				<div class="article-author">BY <?php echo strtoupper(get_the_author()); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
 
 		 	  </div>
 
@@ -184,7 +184,7 @@
 	 	  	  <div class="issue-article">
 	 	  	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
-				<div class="article-author">BY <?php echo strtoupper(get_the_author()); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
 				<div class="article-excerpt"> 
 					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
 				</div>

@@ -9,10 +9,16 @@
 	defined('ABSPATH') or die("No script kiddies please!");
 	add_action( 'init', 'create_article_post_type');
 	add_action('init', 'create_issue_taxonomy');
+
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	add_action('wp_head', 'track_article_views');
+
 	add_action('create_issue', 'set_issue_date');
 	add_action('after_setup_theme', 'initialize_issues');
+
+	add_action('add_meta_boxes', 'add_author_meta_box');
+	add_action('save_post', 'save_author_meta_box_data');
+
 
 
 	function initialize_issues() {
@@ -50,7 +56,7 @@
 	    set_article_views($postID);
 	}
 
-	function get_article_views($postID) {
+	function get_article_views($postID = null) {
 		if (empty($postID)) {
 	    	if (!empty($post)) {
 		        global $post;
@@ -93,6 +99,53 @@
 	}
 
 
+	// Functions to add a meta box for the author
+	function add_author_meta_box() {
+		add_meta_box(
+			'author_meta_box',
+			'Author',
+			'get_author_meta_box',
+			'article',
+			'normal',
+			'high'
+		);
+	}
+
+	function get_author_meta_box($article) {
+		// Add an nonce field so we can check for it later.
+		wp_nonce_field( 'author_meta_box', 'author_meta_box_nonce' );
+
+		$old_author = get_post_meta( $article->ID, 'author', true );
+
+		echo '<input type="text" id="author_field" name="author_field" value="' . esc_attr( $old_author ) . '" size="25" />';
+		echo '<p> The person who wrote this article. Defaults to "The Dartmouth Chronicle" </p>';
+	}
+
+	function save_author_meta_box_data($article_id) {
+		if (!isset( $_POST['author_meta_box_nonce'] )) return;
+		if (!wp_verify_nonce($_POST['author_meta_box_nonce'], 'author_meta_box')) return;
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+		if (!current_user_can('edit_article', $article_id)) return;
+		if (!isset( $_POST['author_field'] )) return;
+
+		$author = sanitize_text_field( $_POST['author_field'] );
+		update_post_meta($article_id, 'author', $author);
+	}
+
+	function get_author($postID = null) {
+		if (empty($postID)) {
+	    	if (!empty($post)) {
+		        global $post;
+		        $postID = $post->ID;
+		    }
+		    else return;
+	    }
+
+		$author = get_post_meta($postID, 'author', true);
+		return (strlen($author) > 0 ? $author : 'The Dartmouth Chronicle');
+	}
+
+
 	// Functions to create custom post types and taxonomoies
 	function create_article_post_type() {
 		register_post_type('article',
@@ -108,7 +161,7 @@
  					'search_items' => __('Search Articles'),
 				),
 				'taxonomies' => array('category'),
-				'supports' => array('title','editor','thumbnail', 'author', 'excerpt', 'comments'),
+				'supports' => array('title','editor','thumbnail', 'excerpt', 'comments'),
 				'public' => true,
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'articles'),

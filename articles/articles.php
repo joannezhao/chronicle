@@ -10,7 +10,19 @@
 	add_action( 'init', 'create_article_post_type');
 	add_action('init', 'create_issue_taxonomy');
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-	add_action( 'wp_head', 'track_article_views');
+	add_action('wp_head', 'track_article_views');
+	add_action('create_issue', 'set_issue_date');
+	add_action('after_setup_theme', 'initialize_issues');
+
+
+	function initialize_issues() {
+		add_theme_support('post-thumbnails');
+		add_image_size('issue', 340, 420, true);
+	}
+
+	function set_issue_date($categoryID) {
+		add_term_meta($categoryID, 'date', date('d/m/Y'), true);
+	}
 
 
 	// Functions for article view counter 

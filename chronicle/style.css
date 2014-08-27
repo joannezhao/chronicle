@@ -593,3 +593,122 @@ site,
 .tp_recent_tweets .twitter_time:hover {
 	color: #999;
 }
+
+
+/****************************
+/*
+/*	This issue styles
+/*
+/****************************/
+
+.issue-wrapper {
+	float: left;
+	width: 920px;
+	margin-left: 20px;
+}
+.issue-cover {
+	float: right;
+	position: relative;
+	width: 340px;
+	height: 420px;
+	overflow: hidden;
+}
+.issue-image {
+	position: absolute;
+	top: 0px;
+	height: 360px;
+	overflow: hidden;
+	z-index: 1000;
+}
+.issue-image-blur {
+	position: absolute;
+	width: 344px;
+	height: 424px;
+	margin: -2px -2px -2px -2px;
+	
+	-webkit-filter: blur(4px);
+	-moz-filter: blur(4px);
+	-ms-filter: blur(4px);
+	filter: blur(4px);
+}
+.issue-title-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(150, 150, 150, 0.65098);
+}
+.issue-title {
+	position: absolute;
+	top: 360px;
+	width: 340px;
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+}
+.issue-title-text {
+	display: inline-block;
+	width: 340px;
+	margin-top: 10px;
+	font-family: "Lato", sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	text-align: center;
+	color: #FCFCFC;
+}
+.issue-title-border {
+	position: relative;
+	width: 80px;
+	margin: 5px auto;
+	border-bottom: solid 1px #FCFCFC;
+}
+
+.issue-articles {
+	float: left;
+	width: 580px;
+	border-top: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+	background-color: #F0F0F0;
+	box-shadow: inset 0px 11px 8px -10px #DDD;
+}
+.issue-article {
+	width: 520px;
+	margin-left: 20px;
+	padding: 18px 0;
+	border-bottom: solid 1px #CCC;
+}
+.issue-article:last-of-type {
+	border-bottom: none;
+	padding-bottom: 17px;
+}
+.issue-article .article-category {
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	color: #6b8a1c;
+}
+.issue-article .article-title {
+	width: 100%;
+	margin-top: 0px;
+	font-family: "Lora", serif;
+	font-size: 18px;
+	font-weight: 300;
+	color: #333;
+}
+.issue-article .article-author {
+	margin-top: -2px;
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 10px;
+	font-weight: 900;
+	letter-spacing: 1px;
+	color: #333;
+}
+.issue-article .article-excerpt {
+	margin-top: 3px;
+	width: 500px;
+	font-family: "Lora", serif;
+	font-weight: 300;
+	font-size: 14px;
+	color: #333;
+}

@@ -96,7 +96,7 @@
 
 			$result .= '
 				<div class="slide-link ' . ($first ? 'active' : '') . '" data-id="' . get_the_ID() . '">
-				  <div class="slide-link-category">' . get_the_first_category() . '</div>
+				  <div class="slide-link-category">' . get_the_first_category(false) . '</div>
 				  <div class="slide-link-title">' . get_the_title() . '</div>
 				</div>';
 			$first = false;
@@ -140,16 +140,4 @@
 	  //     </div>
 	  //   </div>
 	  // </div>
-
-	function get_the_first_category() {
-		$the_categories = get_the_category();
-		foreach ($the_categories as $key => $value) {
-			if ($value->name == "Featured") {
-				unset($the_categories[$key]);
-			}
-		}
-		$the_categories = array_values($the_categories);
-		
-		return (count($the_categories) ? strtoupper($the_categories[0]->name) : "CURRENT"); 
-	}
 ?>

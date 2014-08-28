@@ -10,8 +10,8 @@
 	 * @link http://codex.wordpress.org/Template_Hierarchy
 	 *
 	 * @package WordPress
-	 * @subpackage Twenty_Fourteen
-	 * @since Twenty Fourteen 1.0
+	 * @subpackage Dartmouth Chronicle
+	 * @since Dartmouth Chronicle 1.0
 */
 
 	require 'packages/vendor/autoload.php';
@@ -20,7 +20,7 @@
 ?>
 
 <div class="page-center">
-  <div id="main-content" class="main-content">
+  <div id="content" class="content">
   	<div id="content-left">
 
 	    <!-- Slider -->

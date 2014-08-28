@@ -132,7 +132,7 @@
 		update_post_meta($article_id, 'author', $author);
 	}
 
-	function get_author($postID = null) {
+	function get_author($postID = null, $link = false) {
 		if (empty($postID)) {
 	    	if (!empty($post)) {
 		        global $post;
@@ -142,7 +142,50 @@
 	    }
 
 		$author = get_post_meta($postID, 'author', true);
-		return (strlen($author) > 0 ? $author : 'The Dartmouth Chronicle');
+		if (strlen($author) > 0) {
+			return ($link ? '<a href="' . '">' . $author . '</a>' : $author);
+		}
+		else {
+			return 'The Dartmouth Chronicle';
+		}
+	}
+
+
+	// Functions to get article information
+	function get_the_first_category($link = false) {
+		$the_categories = get_the_category();
+		foreach ($the_categories as $key => $value) {
+			if ($value->name == "Featured") {
+				unset($the_categories[$key]);
+			}
+		}
+		$the_categories = array_values($the_categories);
+		
+		if (count($the_categories) > 0) {
+			return ($link ? '<a class="category-link" href="' . get_category_link($the_categories) . '">' . current($the_categories)->name . '</a>' :
+				strtoupper(current($the_categories)->name)); 
+		}
+		else {
+			return 'CURRENT';
+		}
+	}
+
+	function get_the_issue($postID = null) {
+		if (empty($postID)) {
+	    	if (!empty($post)) {
+		        global $post;
+		        $postID = $post->ID;
+		    }
+		    else return;
+	    }
+
+		$issue = get_the_terms($postID, 'issue');
+		if ($issue == false) {
+			return get_the_date();
+		}
+		else {
+			return '<a href="' . get_term_link(current($issue)) . '">' . current($issue)->name . ' Issue</a>';
+		}
 	}
 
 

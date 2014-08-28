@@ -16,7 +16,7 @@
 		  <div class="page-center">
 			<div id="footer-blurb">
 				The Dartmouth Chronicle is a magazine featuring content written by students,
-				professors, and alumni that bring the Dartmouth community together and highlight
+				professors, and alumni that brings the Dartmouth community together and highlights
 				the issues of the day
 			</div>
 			<div class="footer-list">
@@ -39,12 +39,6 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="/skrollr.js"></script>
 	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/project.js'; ?>"></script>
-
-	<script type="text/javascript">
-    $(document).ready(function() {
-    	var s = skrollr.init();
-    });
-  </script>
 
 </body>
 </html>

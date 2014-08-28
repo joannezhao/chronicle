@@ -1,5 +1,46 @@
 $(document).ready(function() {
 
+	var s = skrollr.init({
+		smoothScrolling: false,
+		forceHeight: false
+	});
+
+	var getHeight = function (fromClass) {
+	    var $inspector = $("<div>").css('display', 'none').addClass(fromClass);
+	    $("body").append($inspector);
+	    try {
+	        return $inspector.height();
+	    }
+	    finally {
+	        $inspector.remove();
+	    }
+	};
+
+	var refresh_skrollr = function() {
+		var viewport_height = $(window).height();
+		$('.wrapper-parallax-image').each(function() {
+			var cls = new String();
+			cls = $(this).hasClass('wrapper-parallax-image-sm') ? 'wrapper-parallax-image-sm' : cls;
+			cls = $(this).hasClass('wrapper-parallax-image-lg') ? 'wrapper-parallax-image-lg' : cls;
+			var height = getHeight(cls);
+			if (height == 0) { return; }
+			var newHeight = height + viewport_height;
+			$(this).attr('data-bottom-top', 'transform: translate3d(0px, ' + newHeight + 'px, 0px);');
+			console.log("h: " + height);
+			console.log("v: " + viewport_height);
+
+			var img = $(this).find('.parallax-image');
+			var e = height - (height * height) / viewport_height;
+			img.css({'height': height + e});
+			img.attr('data-top-bottom', 'transform: translate3d(0px, ' + (height - e) + 'px, 0px);');
+		});
+		setTimeout(function() { skrollr.get().refresh(); }, 0);
+	};
+
+	refresh_skrollr();
+	$(window).resize(refresh_skrollr);
+
+
 	// Slider animation
 	var animate_slider = function(next) {
 		var wrapper = next.closest('.slide-wrapper');

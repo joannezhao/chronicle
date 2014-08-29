@@ -27,8 +27,8 @@
 </div>
 
 <div class="article" data-id="<?php the_ID(); ?>">
-  
-  <div class="page-center">
+    <div class="page-center">
+	  
 	  <div class="article-category-wrapper">
 	  	<div class="article-category">
 	  		<?php echo get_the_first_category(true); ?>
@@ -42,9 +42,11 @@
 	  	<div class="article-excerpt"><?php echo get_the_excerpt(); ?></div>
 	  <?php endif; ?>
 	  <div class="article-author">By <?php echo get_author(get_the_ID(), true); ?></div>
+	
   </div>
 
-  <div class="gap gap-lg" id="gap0"></div>
+  <div class="gap gap-lg shadow-inset-sm" id="gap0"></div>
+  <div class="article-content-spacer"></div>
 
 
 	<!-- <header class="entry-header">
@@ -56,7 +58,8 @@
 
 				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
 			?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'twentyfourteen' ), __( '1 Comment', 'twentyfourteen' ), __( '% Comments', 'twentyfourteen' ) ); ?></span>
+			<span class="comments-link"><?php comments_popup_link(
+			__( 'Leave a comment', 'twentyfourteen' ), __( '1 Comment', 'twentyfourteen' ), __( '% Comments', 'twentyfourteen' ) ); ?></span>
 			<?php
 				endif;
 

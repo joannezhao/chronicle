@@ -30,6 +30,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
@@ -44,19 +45,20 @@
 	<?php if (get_header_image()): ?>
 	  <div id="navbar"
 	  	data-top="position:absolute; top:!0px;"
-	  	<?php if (is_admin_bar_showing()): ?> data-78="position:fixed; top:!-46px;">
-	  	<?php else: ?> data-78="position:fixed; top:!-78px;">
+	  	<?php if (is_admin_bar_showing()): ?> data-75="position:fixed; top:!-43px;">
+	  	<?php else: ?> data-75="position:fixed; top:!-75px;">
 	  	<?php endif; ?>
 
 	  	<div id="navbar-center">
 		
-				<div id="navbar-title-wrapper">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?php header_image(); ?>" width="300 <?php //echo get_custom_header()->width; ?>" height="45 <?php //echo get_custom_header()->height; ?>" alt="">
-					</a>
-				</div>
+			<div id="navbar-title-wrapper">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+					<img src="<?php header_image(); ?>" width="300 <?php //echo get_custom_header()->width; ?>" height="45 <?php //echo get_custom_header()->height; ?>" alt="">
+				</a>
+			</div>
 
-				<div id="navbar-link-wrapper">
+			<div id="navbar-link-wrapper">
+			  <div id="navbar-link-subwrapper">
 			    <span class="navbar-link">
 			      <span class="navbar-link-text">About</span>
 			    </span>
@@ -70,18 +72,25 @@
 			      <span class="navbar-link-text">Narrative</span>
 			    </span>
 			    <span class="navbar-link">
+			      <span class="navbar-link-text">Politics</span>
+			    </span>
+			    <span class="navbar-link">
 			      <span class="navbar-link-text">Sports</span>
 			    </span>
 			    <span class="navbar-link">
 			      <span class="navbar-link-text">Media</span>
 			    </span>
-			    <span class="navbar-link">
-			    	<span class="navbar-link-text">Search</span>
+			    <span id="navbar-search" data-expanded="false">
+				  <form id="navbar-search-form" action="" method="get">
+				  	<input id="navbar-search-field" type="text" name="q" />
+				  </form>
+			      <span id="navbar-search-text"><span class="glyphicon glyphicon-search"></span></span>
 			    </span>
-			  </div>
+		      </div>
+		    </div>
 
-		  </div>
 		</div>
+	  </div>
 	<?php endif; ?>
 
 <!-- 	<header id="masthead" class="site-header" role="banner">

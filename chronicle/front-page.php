@@ -45,7 +45,7 @@
 		      <div class="divider-border"></div>
 		    </div>
 
-		    <div class="featured-wrapper">
+		    <div class="featured-wrapper"><a href="<?php echo get_the_permalink(); ?>">
 		 	  <div class="featured-image shadow-inset" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
 		 	  <div class="featured-article">
 		 	  	
@@ -57,7 +57,7 @@
 				</div>
 
 		 	  </div>
-		 	</div>
+		 	</a></div>
 
 	     <?php endif; ?>
 	</div>
@@ -78,13 +78,13 @@
 	    		$loop->the_post();
 	    	?>
 
-	    	  <div class="popular-article">
+	    	  <div class="popular-article"><a href="<?php echo get_the_permalink(); ?>">
 		 	  	
 		 	 	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
 				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
 
-		 	  </div>
+		 	  </a></div>
 
 		<?php endwhile; ?>
 

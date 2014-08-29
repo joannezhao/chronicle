@@ -10,7 +10,6 @@
 	get_header();
 ?>
 
-<div class="page-center">
 	<div id="content" class="content">
 
 		<?php
@@ -24,18 +23,10 @@
 				 */
 				get_template_part( 'content', get_post_format() );
 
-				// Previous/next post navigation.
-				twentyfourteen_post_nav();
-
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) {
-					comments_template();
-				}
 			endwhile;
 		?>
 
 	</div>
-</div>
 
 <?php
 

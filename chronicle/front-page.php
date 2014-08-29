@@ -46,9 +46,7 @@
 		    </div>
 
 		    <div class="featured-wrapper">
-		 	  <div class="featured-image">
-		 	  	<img width="360" height="300" title="<?php the_title(); ?>" src="<?php echo $the_url[0]; ?>" />
-		 	  </div>
+		 	  <div class="featured-image shadow-inset" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
 		 	  <div class="featured-article">
 		 	  	
 		 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
@@ -149,8 +147,8 @@
 	 	<div class="issue-wrapper">
 	 	  <div class="issue-cover">
 	 	  	
-	 	  	<div class="issue-image">
-	 	  	  <img title="<?php echo $newest_issue->name; ?>" src="<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>" />
+	 	  	<div class="issue-image shadow-inset"
+	 	  		style="background-image: url('<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>');">
 	 	  	</div>
 	 	  	<div class="issue-image-blur">
 	 	  	  <img width="344" height="424" src="<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>" />

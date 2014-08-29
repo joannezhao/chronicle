@@ -26,8 +26,6 @@ $(document).ready(function() {
 			if (height == 0) { return; }
 			var newHeight = height + viewport_height;
 			$(this).attr('data-bottom-top', 'transform: translate3d(0px, ' + newHeight + 'px, 0px);');
-			console.log("h: " + height);
-			console.log("v: " + viewport_height);
 
 			var img = $(this).find('.parallax-image');
 			var e = height - (height * height) / viewport_height;
@@ -36,6 +34,26 @@ $(document).ready(function() {
 		});
 		setTimeout(function() { skrollr.get().refresh(); }, 0);
 	};
+
+	$('img.size-parallax').each(function(i) {
+		$(this).after('<div class="gap gap-sm" id="gap' + (i+1) + '"></div>');
+		$(this).remove();
+		$('#content').prepend('\
+			<div class="wrapper-parallax-image wrapper-parallax-image-sm"\
+			    data-anchor-target="#gap' + (i+1) + '"\
+				data-bottom-top="transform: translate3d(0px, 1200px, 0px);"\
+				data-top-bottom="transform: translate3d(0px, 0px, 0px);">\
+				\
+				<div class="parallax-image parallax-image-sm"\
+					data-anchor-target="#gap' + (i+1) + '"\
+					style="background-image:url(\'' + $(this).attr('src') + '\');"\
+					data-bottom-top="transform: translate3d(0px, -300px, 0px);"\
+					data-top-bottom="transform: translate3d(0px, 220px, 0px);">\
+				</div>\
+			</div>');
+		setTimeout(refresh_skrollr, 40);
+		setTimeout(refresh_skrollr, 200);
+	});
 
 	refresh_skrollr();
 	$(window).resize(refresh_skrollr);
@@ -96,7 +114,7 @@ $(document).ready(function() {
 
 			active.removeClass('active');
 			next.addClass('active').removeClass('appearing');
-			wrapper.find('.slide').removeAttr('style');
+			wrapper.find('.slide').css('opacity', '');
 		}
 	});
 	$('.slide-info').on("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e) {
@@ -107,7 +125,7 @@ $(document).ready(function() {
 
 			active.removeClass('active');
 			next.addClass('active').removeClass('appearing');
-			wrapper.find('.slide-info').removeAttr('style');
+			wrapper.find('.slide-info').css('opacity', '');
 		}
 	});
 
@@ -119,8 +137,22 @@ $(document).ready(function() {
 		links.css('width', width);
 	});
 
+
+
+	// // Comment section
+	// $('#comment').on('focus', function() {
+	// 	if ($(this).attr('data-empty') == 'true') {
+	// 		$(this).val('').css('color', '#555').attr('data-empty', 'false');
+	// 	}
+	// })
+	// .on('blur', function() {
+	// 	if ($(this).val().length == 0) {
+	// 		$(this).val('Add a comment').css('color', '#999').attr('data-empty', 'true');
+	// 	}
+	// });
 });
 
 $(window).load(function() {
 	$('body').removeAttr('style');
+	$('p').removeAttr('style');
 });

@@ -18,12 +18,22 @@
 
 	add_action('add_meta_boxes', 'add_author_meta_box');
 	add_action('save_post', 'save_author_meta_box_data');
+	add_filter( 'image_size_names_choose', 'add_parallax_image_size' );
 
+	function add_parallax_image_size( $sizes ) {
+	    return array_merge($sizes, array(
+	        'parallax' => 'Parallax',
+	        'article' => 'Full-Width',
+	    ));
+	}
 
 
 	function initialize_issues() {
 		add_theme_support('post-thumbnails');
 		add_image_size('issue', 340, 420, true);
+		add_image_size('recommended', 200, 140, true);
+		add_image_size('parallax', 660, 400, true);
+		add_image_size('article', 660, 400, true);
 	}
 
 	function set_issue_date($categoryID) {

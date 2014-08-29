@@ -81,8 +81,8 @@
 
 			$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'slide');
 			$result .= '
-			    <div class="slide ' . ($first ? 'active' : '') . '" data-id="' . get_the_ID() . '">
-				  <img width="720" height="360" title="' . get_the_title() . '" src="' . $the_url[0] . '" />
+			    <div class="slide shadow-inset ' . ($first ? 'active' : '') . '" data-id="' . get_the_ID() . '"
+			    	style="background-image: url(' . $the_url[0] . ');">
 			    </div>';
 			$first = false;
 		}

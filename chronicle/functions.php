@@ -16,4 +16,5 @@ add_action('admin_menu', 'remove_menus');
 define('HEADER_IMAGE_WIDTH', 300);
 define('HEADER_IMAGE_HEIGHT', 45);
 
+if (!isset($content_width)) $content_width = 960;
 ?>

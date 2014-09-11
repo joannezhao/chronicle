@@ -34,6 +34,7 @@
 		add_image_size('recommended', 200, 140, true);
 		add_image_size('parallax', 660, 400, true);
 		add_image_size('article', 660, 400, true);
+		add_image_size('search', 260, 260, true);
 	}
 
 	function set_issue_date($categoryID) {
@@ -180,7 +181,7 @@
 		}
 	}
 
-	function get_the_issue($postID = null) {
+	function get_the_issue($postID = null, $link = true) {
 		if (empty($postID)) {
 	    	if (!empty($post)) {
 		        global $post;
@@ -194,7 +195,12 @@
 			return get_the_date();
 		}
 		else {
-			return '<a href="' . get_term_link(current($issue)) . '">' . current($issue)->name . ' Issue</a>';
+			if ($link) {
+				return '<a href="' . get_term_link(current($issue)) . '">' . current($issue)->name . ' Issue</a>';
+			}
+			else {
+				return current($issue)->name . ' Issue';
+			}
 		}
 	}
 

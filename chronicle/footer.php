@@ -29,6 +29,9 @@
 				<a href="/">Vimeo</a>
 				<a href="/">Facebook</a>
 			</div>
+			<div id="dali-logo">
+			  <img src="<?php bloginfo('stylesheet_directory'); ?>/static/images/dali.png" width="200" height="100" />
+			</div>
 		  </div>
 		</footer
 	
@@ -38,8 +41,8 @@
 
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script type="text/javascript" src="/skrollr.js"></script>
-	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/project.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/static/js/skrollr.js'; ?>"></script>
+	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() . '/static/js/project.js'; ?>"></script>
 
 </body>
 </html>

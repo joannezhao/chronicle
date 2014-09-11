@@ -40,6 +40,7 @@
 </head>
 
 <body>
+<div class="skrollr-body"></div>
 <div id="page" class="site">
 	
 	<?php if (get_header_image()): ?>
@@ -53,36 +54,38 @@
 		
 			<div id="navbar-title-wrapper">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-					<img src="<?php header_image(); ?>" width="300 <?php //echo get_custom_header()->width; ?>" height="45 <?php //echo get_custom_header()->height; ?>" alt="">
+					<!-- <img src="<?php header_image(); ?>" width="300 <?php //echo get_custom_header()->width; ?>" height="45 <?php //echo get_custom_header()->height; ?>" alt=""> -->
+					<div id="title-upper">Dartmouth</div>
+					<div id="title-lower">Chronicle</div>
 				</a>
 			</div>
 
 			<div id="navbar-link-wrapper">
 			  <div id="navbar-link-subwrapper">
-			    <span class="navbar-link">
+			    <a href="/about/" class="navbar-link">
 			      <span class="navbar-link-text">About</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Science')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Science</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Arts')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Arts</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Narrative')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Narrative</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Politics')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Politics</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Sports')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Sports</span>
-			    </span>
-			    <span class="navbar-link">
+			    </a>
+			    <a href="<?php echo get_category_link(get_cat_ID('Media')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Media</span>
-			    </span>
+			    </a>
 			    <span id="navbar-search" data-expanded="false">
-				  <form id="navbar-search-form" action="" method="get">
-				  	<input id="navbar-search-field" type="text" name="q" />
+				  <form id="navbar-search-form" action="/" method="get">
+				  	<input id="navbar-search-field" type="text" name="s" />
 				  </form>
 			      <span id="navbar-search-text"><span class="glyphicon glyphicon-search"></span></span>
 			    </span>
@@ -92,27 +95,5 @@
 		</div>
 	  </div>
 	<?php endif; ?>
-
-<!-- 	<header id="masthead" class="site-header" role="banner">
-		<div class="header-main">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-
-			<div class="search-toggle">
-				<a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'twentyfourteen' ); ?></a>
-			</div>
-
-			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-				<button class="menu-toggle"><?php _e( 'Primary Menu', 'twentyfourteen' ); ?></button>
-				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentyfourteen' ); ?></a>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-			</nav>
-		</div>
-
-		<div id="search-container" class="search-box-wrapper hide">
-			<div class="search-box">
-				<?php get_search_form(); ?>
-			</div>
-		</div>
-	</header> -->
 
 	<div id="main" class="site-main">

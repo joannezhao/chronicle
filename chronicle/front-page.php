@@ -107,7 +107,7 @@
 			$instance['accesstoken'] = '2770409635-JZn74iNTlyqvPJu51BhVeUwF48fDJYXoxt51pVr';
 			$instance['accesstokensecret'] = 'a01WCjOSwASNuc8JcwUpHCqKooxtoTkIUDsR969867NMR';
 			$instance['cachetime'] = '2';
-			$instance['username'] = 'dartmouth';
+			$instance['username'] = 'dchronicle2014';
 			$instance['tweetstoshow'] = '3';
 			$instance['excludereplies'] = 'true';
 

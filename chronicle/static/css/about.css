@@ -1,0 +1,85 @@
+/*
+  Title: 		about.css
+  Description:	The styles for the about page
+  Author:   	Mitchell Goff
+  Date:			September 8, 2014
+  Version:  	1.0.0
+  Site:  		http://www.thedartmouthchronicle.com
+*/
+
+
+/****************************
+/*
+/*	About Page Styles
+/*
+/****************************/
+
+.page-wrapper {
+	position: relative;
+	width: 100%;
+	background-color: #ECECEC;
+	z-index: 10;
+}
+.page-title {
+	width: 100%;
+	text-align: center;
+	font-family: "Lora", serif;
+	font-size: 28px;
+	font-weight: 300;
+	color: #333;
+}
+.page-content {
+	width: 100%;
+	padding: 0;
+	border-top: solid 1px #CCC;
+}
+
+.about-bar {
+	position: relative;
+	width: 100%;
+	height: 40px;
+	background-color: #FFF;
+	border-bottom: solid 3px #D6D6D6;
+	z-index: 10;
+	text-align: center;
+}
+.about-wrapper {
+	display: inline-block;
+}
+.about-link {
+	display: inline-block;
+	height: 40px;
+	padding: 0 25px;
+	background-color: #FFF;
+	border-bottom: solid 3px #D6D6D6;
+
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 700;
+	color: #333;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 40px;
+	transition: border-color 0.2s;
+	cursor: pointer;
+}
+.about-link.active {
+	background-color: #F6F6F6;
+	border-color: #6B8A1C;
+}
+.about-link:hover {
+	border-color: #6B8A1C;
+}
+
+.about-section {
+	display: none;
+	width: 100%;
+	padding: 10px 0;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	color: #333;
+}
+.about-section.active {
+	display: block;
+}

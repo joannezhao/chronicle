@@ -27,6 +27,7 @@ $(document).ready(function() {
 			var cls = new String();
 			cls = $(this).hasClass('wrapper-parallax-image-sm') ? 'wrapper-parallax-image-sm' : cls;
 			cls = $(this).hasClass('wrapper-parallax-image-lg') ? 'wrapper-parallax-image-lg' : cls;
+			cls = $(this).hasClass('wrapper-parallax-image-full') ? 'wrapper-parallax-image-full' : cls;
 			var height = getHeight(cls);
 			if (height == 0) { return; }
 			var newHeight = height + viewport_height;
@@ -195,6 +196,14 @@ $(document).ready(function() {
 	});
 	
 	$('blockquote').addClass('quote');
+	$('.article p a img').closest('p').addClass('side-image');
+	$('.article figure a img').closest('figure').addClass('side-image');
+	$('.article a img').each(function() {
+		$(this).after('<div class="side-image shadow-inset-tiny ' + $(this).attr('class') + '" \
+			style="background-image: url(\'' + $(this).attr('src') + '\'); \
+			width: ' + $(this).attr('width') + 'px; \
+			height: ' + $(this).attr('height') + 'px;"></div>').remove();
+	});
 
 
 	// // Comment section
@@ -208,6 +217,13 @@ $(document).ready(function() {
 	// 		$(this).val('Add a comment').css('color', '#999').attr('data-empty', 'true');
 	// 	}
 	// });
+
+	$('.about-link').on('click', function() {
+		if ($(this).hasClass('active')) return;
+		var page = $(this).attr('data-id');
+		$('.about-link').removeClass('active').filter('[data-id="' + page + '"]').addClass('active');
+		$('.about-section').removeClass('active').filter('[data-id="' + page + '"]').addClass('active');
+	})
 });
 
 $(window).load(function() {

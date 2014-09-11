@@ -1,0 +1,273 @@
+/*
+  Title: 		sliders.css
+  Description:	The styles for the sliders
+  Author:   	Mitchell Goff
+  Date:			September 8, 2014
+  Version:  	1.0.0
+  Site:  		http://www.thedartmouthchronicle.com
+*/
+
+
+/****************************
+/*
+/*	Slider Styles
+/*
+/****************************/
+
+.slide-window {
+	float: left;
+	position: relative;
+}
+.slide-wrapper {
+	position: relative;
+	width: 720px;
+	height: 360px;
+}
+
+/* Slide image */
+.slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 720px;
+	height: 360px;
+	opacity: 0;
+
+	-webkit-transition: opacity 0.8s;
+	transition: opacity 0.8s;
+	-webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+}
+.slide.active {
+	z-index: 1000;
+	opacity: 1;
+}
+.slide.appearing {
+	z-index: 1005;
+}
+.slide a {
+	display: block;
+	position: relative;
+	width: 720px;
+	height: 360px;
+}
+
+
+/****************************
+/*
+/*	Aero-Slider Styles
+/*
+/****************************/
+
+/*.slide .img-wrapper {
+	position: absolute;
+	top: 0px;
+	height: 280px;
+	overflow: hidden;
+	z-index: 1000;
+}
+
+.slide-title {
+	position: absolute;
+	width: 720px;
+	height: 360px;
+	overflow: hidden;
+	z-index: 999;
+}
+.slide-title-background  {
+	position: absolute;
+	width: 724px;
+	height: 364px;
+	margin: -2px -2px -2px -2px;
+	
+	-webkit-filter: blur(5px);
+	-moz-filter: blur(5px);
+	-ms-filter: blur(5px);
+	filter: blur(5px);
+}
+.slide-title-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(80, 80, 80, 0.65098);
+}
+.slide-title-text {
+	position: absolute;
+	top: 280px;
+	-webkit-backface-visibility: hidden;
+}
+.article-title {
+	float: left;
+	width: 700px;
+	margin-top: 5px;
+	margin-left: 10px;
+	padding-bottom: 2px;
+	border-bottom: solid 1px #FFF;
+	font-family: "Lato", sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #FCFCFC;
+}
+.article-excerpt {
+	float: left;
+	width: 700px;
+	margin-left: 10px;
+	margin-top: 2px;
+	font-family: "Lora", serif;
+	font-size: 13px;
+	font-weight: 300px;
+	color: #FCFCFC;
+}*/
+
+/* Slideshow navigation arrows */
+.slide-arrow {
+	position: absolute;
+	top: 180px;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	border-radius: 50%;
+	background-color: #333;
+	z-index: 1500;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+	background-color: rgba(204, 204, 204, 0.65098);
+	background-repeat: no-repeat;
+	background-size: auto;
+	cursor: pointer;
+}
+.slide-window:hover .slide-arrow {
+	opacity: 0.8;
+}
+.slide-arrow:hover {
+	background-color: #6b8a1c;
+}
+.slide-arrow-left {
+	left: 15px;
+	background-image: url('../images/prev_pointer.png');
+	background-position: 11px center;
+}
+.slide-arrow-right {
+	background-image: url('../images/next_pointer.png');
+	background-position: 13px center;
+	right: 15px;
+}
+
+/* Slideshow navigation links */
+.slide-link-wrapper {
+	display: none;
+	position: relative;
+	width: 720px;
+	height: 40px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.slide-link {
+	float: left;
+	width: 130px;
+	border-right: solid 1px #CCC;
+	margin-right: 13px;
+	cursor: pointer;
+	color: #444;
+}
+.slide-link-category {
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 1px;
+}
+.slide-link-title {
+	margin-top: -2px;
+	font-family: "Lora", serif;
+	font-size: 16px;
+	font-weight: 300;
+}
+.slide-link.active {
+	color: #6b8a1c;
+}
+.slide-link:hover {
+	color: #6b8a1c;
+}
+.slide-link:last-of-type {
+	border-right: none;
+}
+
+/* Slide article information */
+.slide-info-wrapper {
+	position: relative;
+	width: 720px;
+	height: 150px;
+	/*margin-top: 10px;*/
+	border-top: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+	background-color: #F0F0F0;
+	box-shadow: inset 0px 11px 8px -10px #DDD;
+        /*inset 0px -11px 8px -10px #CCC;*/
+}
+.slide-info {
+	position: absolute;
+	width: 720px;
+	margin-top: 10px;
+	background-color: #F0F0F0;
+	opacity: 0;
+
+	-webkit-transition: opacity 0.8s;
+	transition: opacity 0.8s;
+	-webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+	-webkit-backface-visibility: hidden;
+}
+.slide-info.active {
+	z-index: 1000;
+	opacity: 1;
+}
+.slide-info.appearing {
+	z-index: 1005;
+}
+.slide-info a {
+	display: block;
+	position: relative;
+	width: 720px;
+	height: 140px;
+	text-decoration: none;
+}
+
+.slide-info .article-category {
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #6b8a1c;
+}
+.slide-info .article-title {
+	width: 100%;
+	font-family: "Lora", serif;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	color: #333;
+}
+.slide-info .article-author {
+	margin-top: -4px;
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 10px;
+	font-weight: 900;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #333;
+}
+.slide-info .article-excerpt {
+	margin-top: 5px;
+	width: 300px;
+	margin-left: 210px;
+	font-family: "Lora", serif;
+	font-weight: 300;
+	font-size: 13px;
+	text-align: center;
+	color: #333;
+}

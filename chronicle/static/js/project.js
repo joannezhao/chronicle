@@ -7,6 +7,7 @@ $(document).ready(function() {
 	$('.navbar-link').each(function(i) {
 		if (i==0) { $(this).attr('data-margin', '0'); return; }
 		var margin = parseInt($(this).prev().attr('data-margin')) + $(this).prev().outerWidth();
+		console.log(parseInt($(this).prev().attr('data-margin')) + ', ' + $(this).prev().outerWidth());
 		$(this).css({'margin-left': margin}).attr('data-margin', margin);
 	});
 
@@ -199,7 +200,7 @@ $(document).ready(function() {
 	$('.article p a img').closest('p').addClass('side-image');
 	$('.article figure a img').closest('figure').addClass('side-image');
 	$('.article a img').each(function() {
-		$(this).after('<div class="side-image shadow-inset-tiny ' + $(this).attr('class') + '" \
+		$(this).after('<div class="side-image ' + $(this).attr('class') + '" \
 			style="background-image: url(\'' + $(this).attr('src') + '\'); \
 			width: ' + $(this).attr('width') + 'px; \
 			height: ' + $(this).attr('height') + 'px;"></div>').remove();

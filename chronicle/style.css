@@ -31,7 +31,6 @@ body {
 #main {
 	position: relative;
 	width: 100%;
-	background-color: #F6F6F6;
 }
 .site {
 	width: 100%;
@@ -52,6 +51,11 @@ body {
 #content {
 	margin-top: 125px;
 }
+.content-top {
+	width: 100%;
+	background-color: #F6F6F6;
+}
+
 #content-left {
 	float: left;
 	width: 720px;
@@ -62,6 +66,14 @@ body {
 	width: 240px;
 	margin-top: 15px;
 }
+.content-middle {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	border-top: solid 1px #DDD;
+	background-color: #FFF;
+}
+
+
 ::-moz-selection {
 	background-color: #5af;
 	color: #fff;
@@ -71,6 +83,9 @@ body {
 	background-color: #5af;
 	color: #fff;
 	text-shadow: none;
+}
+a:hover {
+	text-decoration: none;
 }
 a.category-link {
 	font-family: "Lato", sans-serif;

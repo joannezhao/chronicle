@@ -20,17 +20,23 @@
 				the issues of the day
 			</div>
 			<div class="footer-list">
-				<a href="/">Item</a>
-				<a href="/">Test</a>
-				<a href="/">Item</a>
+				<a href="/">Home</a>
+				<a href="/about/">About</a>
+				<a href="/category/arts/">Arts</a>
+				<a href="/category/narrative/">Narrative</a>
+				<a href="/category/politics/">Politics</a>
+				<a href="/category/science/">Science</a>
+				<a href="/category/sports/">Sports</a>
 			</div>
 			<div class="footer-list">
-				<a href="/">Twitter</a>
-				<a href="/">Vimeo</a>
-				<a href="/">Facebook</a>
+				<a target="_blank" href="https://twitter.com/dchronicle2014">Twitter</a>
+				<a target="_blank" href="/">Vimeo</a>
+				<a target="_blank" href="/">Facebook</a>
 			</div>
 			<div id="dali-logo">
-			  <img src="<?php bloginfo('stylesheet_directory'); ?>/static/images/dali.png" width="200" height="100" />
+			  <a href="http://dali.dartmouth.edu" target="_blank">
+			  	<img src="<?php bloginfo('stylesheet_directory'); ?>/static/images/dali.png" width="200" height="100" />
+			  </a>
 			</div>
 		  </div>
 		</footer

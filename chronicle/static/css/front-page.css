@@ -14,7 +14,7 @@
 /*
 /****************************/
 
-.featured-wrapper {
+/*.featured-wrapper {
 	float: left;
 	width: 680px;
 	margin-left: 20px;
@@ -30,7 +30,7 @@
 	height: 298px;
 	border-top: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
+	background-color: #F6F6F6;
 	box-shadow: inset 0px 11px 8px -10px #DDD;
 }
 
@@ -71,7 +71,7 @@
 	font-size: 14px;
 	text-align: center;
 	color: #333;
-}
+}*/
 
 
 /****************************
@@ -84,10 +84,12 @@
 	float: left;
 	width: 220px;
 	margin-left: 20px;
-	border-top: solid 1px #CCC;
-	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
-	box-shadow: inset 0px 11px 8px -10px #DDD;
+	border: solid 1px #CCC;
+	border-radius: 4px;
+	/*border-top: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;*/
+	background-color: #FFF;
+	/*box-shadow: inset 0px 11px 8px -10px #DDD;*/
 }
 .popular-article {
 	width: 200px;
@@ -138,10 +140,10 @@
 	float: left;
 	width: 220px;
 	margin-left: 20px;
-	border-top: solid 1px #CCC;
-	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
-	box-shadow: inset 0px 11px 8px -10px #DDD;
+	/*border-top: solid 1px #CCC;*/
+	/*border-bottom: solid 1px #CCC;*/
+	/*background-color: #F6F6F6;*/
+	/*box-shadow: inset 0px 11px 8px -10px #DDD;*/
 }
 
 .widget_tp_widget_recent_tweets h2.widgettitle {
@@ -182,11 +184,91 @@
 
 /****************************
 /*
+/*	Featured article styles
+/*
+/****************************/
+
+.section-title-wrapper {
+	width: 100%;
+	text-align: center;
+}
+.section-title {
+	display: inline-block;
+	font-family: "Lato", sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #333;
+	border-bottom: solid 1px #333;
+	padding-bottom: -5px;
+}
+.featured-wrapper {
+	margin: 20px 10px;
+}
+
+.featured-article {
+	float: left;
+	width: 300px;
+	margin: 20px 5px;
+}
+.featured-article-image {
+	width: 100%;
+	height: 220px;
+}
+.featured-article-info {
+	width: 100%;
+	height: 140px;
+}
+
+.featured-article .article-category {
+	width: 100%;
+	margin-top: 10px;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #6b8a1c;
+}
+.featured-article .article-title {
+	width: 100%;
+	font-family: "Lora", serif;
+	font-size: 22px;
+	font-weight: 300;
+	text-align: center;
+	color: #333;
+}
+.featured-article .article-author {
+	margin-top: -4px;
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 10px;
+	font-weight: 900;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #333;
+}
+.featured-article .article-excerpt {
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-family: "Lora", serif;
+	font-weight: 300;
+	font-size: 14px;
+	text-align: center;
+	color: #333;
+}
+
+
+
+/****************************
+/*
 /*	This issue styles
 /*
 /****************************/
 
-.issue-wrapper {
+/*.issue-wrapper {
 	float: left;
 	width: 920px;
 	margin-left: 20px;
@@ -252,7 +334,7 @@
 	width: 580px;
 	border-top: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
+	background-color: #F6F6F6;
 	box-shadow: inset 0px 11px 8px -10px #DDD;
 }
 .issue-article {
@@ -297,4 +379,4 @@
 	font-weight: 300;
 	font-size: 14px;
 	color: #333;
-}
+}*/

@@ -32,6 +32,8 @@
 	width: 720px;
 	height: 360px;
 	opacity: 0;
+	background-size: cover;
+	background-position: center center;
 
 	-webkit-transition: opacity 0.8s;
 	transition: opacity 0.8s;
@@ -200,18 +202,18 @@
 	width: 720px;
 	height: 150px;
 	/*margin-top: 10px;*/
-	border-top: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
-	box-shadow: inset 0px 11px 8px -10px #DDD;
+	background-color: #F6F6F6;
+	/*box-shadow: inset 0px 11px 8px -10px #DDD;*/
         /*inset 0px -11px 8px -10px #CCC;*/
 }
 .slide-info {
 	position: absolute;
 	width: 720px;
 	margin-top: 10px;
-	background-color: #F0F0F0;
+	background-color: #F6F6F6;
 	opacity: 0;
+	/*border-bottom: solid 1px #CCC;*/
 
 	-webkit-transition: opacity 0.8s;
 	transition: opacity 0.8s;
@@ -252,7 +254,7 @@
 	color: #333;
 }
 .slide-info .article-author {
-	margin-top: -4px;
+	margin-top: 0px;
 	width: 100%;
 	font-family: "Lato", sans-serif;
 	font-size: 10px;

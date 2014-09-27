@@ -27,6 +27,7 @@
 </div>
 
 <div class="article" data-id="<?php the_ID(); ?>">
+  <div class="article-top-wrapper">
     <div class="page-center">
 	  
 	  <div class="article-category-wrapper">
@@ -43,10 +44,13 @@
 	  <?php endif; ?>
 	  <div class="article-author">By <?php echo get_author(get_the_ID(), true); ?></div>
 	
+    </div>
   </div>
 
-  <div class="gap gap-lg shadow-inset-sm" id="gap0"></div>
-  <div class="article-content-spacer"></div>
+  <div class="article-mid-wrapper">
+    <div class="gap gap-lg shadow-inset-sm" id="gap0"></div>
+    <div class="article-content-spacer-bottom"></div>
+  </div>
 
 	<?php if ( is_search() ) : ?>
 		<div class="article-summary">

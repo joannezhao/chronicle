@@ -164,7 +164,7 @@
 
 	// Functions to get article information
 	function get_the_first_category($link = false) {
-		$the_categories = get_the_category();
+		$the_categories = get_the_category(get_the_ID());
 		foreach ($the_categories as $key => $value) {
 			if ($value->name == "Featured") {
 				unset($the_categories[$key]);
@@ -173,7 +173,7 @@
 		$the_categories = array_values($the_categories);
 		
 		if (count($the_categories) > 0) {
-			return ($link ? '<a class="category-link" href="' . get_category_link($the_categories) . '">' . current($the_categories)->name . '</a>' :
+			return ($link ? '<a class="category-link" href="' . get_category_link(current($the_categories)) . '">' . current($the_categories)->name . '</a>' :
 				strtoupper(current($the_categories)->name)); 
 		}
 		else {

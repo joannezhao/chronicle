@@ -19,18 +19,79 @@
 	get_header();
 ?>
 
-<div id="content" class="content-top">
-  <div class="page-center">
-    
-    <!-- Slider -->
-    <div id="content-left">
-	  <?php the_homepage_slider(); ?>
+<div class="page-center">
+  <div id="content" class="content">
+  	<div id="content-left">
+
+	    <!-- Slider -->
+	    <?php the_homepage_slider(); ?>
+
+	    <!-- Featured article -->
+	    <?php
+	    	$loop = new WP_Query(
+				array(
+					'category_name' => 'Featured',
+					'post_type' => 'article',
+					'posts_per_page' => 1,
+				));
+
+	    	if ($loop->have_posts()):
+	    		$loop->the_post();
+	    		$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'featured');
+		?>
+
+			<div class="divider">
+		      <div class="divider-text">Featured Article</div>
+		      <div class="divider-border"></div>
+		    </div>
+
+		    <div class="featured-wrapper"><a href="<?php echo get_the_permalink(); ?>">
+		 	  <div class="featured-image shadow-inset" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
+		 	  <div class="featured-article">
+		 	  	
+		 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
+				<div class="article-title"> <?php the_title(); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
+				<div class="article-excerpt"> 
+					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
+				</div>
+
+		 	  </div>
+		 	</a></div>
+
+	     <?php endif; ?>
 	</div>
 
-	<!-- Tweets -->
 	<div id="content-right">
 
+	  <!-- Most viewed articles -->
 	  <div class="divider" style="margin-top:0;">
+	    <div class="divider-text-center"><div class="divider-text">Popular</div></div>
+	    <div class="divider-border"></div>
+	  </div>
+
+	  <div class="popular-wrapper">
+	    <?php
+	     	$loop = get_popular_articles(4);
+
+	    	while ($loop->have_posts()):
+	    		$loop->the_post();
+	    	?>
+
+	    	  <div class="popular-article"><a href="<?php echo get_the_permalink(); ?>">
+		 	  	
+		 	 	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
+				<div class="article-title"> <?php the_title(); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
+
+		 	  </a></div>
+
+		<?php endwhile; ?>
+
+	  </div>
+
+	  <!-- Tweets -->
+	  <div class="divider">
 	    <div class="divider-text-center"><div class="divider-text">Tweets</div></div>
 	    <div class="divider-border"></div>
 	  </div>
@@ -46,7 +107,7 @@
 			$instance['accesstoken'] = '2770409635-JZn74iNTlyqvPJu51BhVeUwF48fDJYXoxt51pVr';
 			$instance['accesstokensecret'] = 'a01WCjOSwASNuc8JcwUpHCqKooxtoTkIUDsR969867NMR';
 			$instance['cachetime'] = '2';
-			$instance['username'] = 'dartmouth';
+			$instance['username'] = 'dchronicle2014';
 			$instance['tweetstoshow'] = '3';
 			$instance['excludereplies'] = 'true';
 
@@ -57,50 +118,89 @@
 	  </div>
 	</div>
 
-	<!-- <div class="divider" style="margin-top:0">
-      <div class="divider-border"></div>
-    </div> -->
 
-  </div>
-</div>
+ 	<!-- Current issue -->
+ 	<div class="divider">
+ 	  <div class="divider-text">Current Issue</div>
+ 	  <div class="divider-border"></div>
+ 	</div>
 
-<div class="content-middle">
-  <div class="page-center">
-
-    <div class="section-title-wrapper"><div class="section-title">Stories</div></div>
-    <div class="featured-wrapper">
-    
-    <!-- Featured article -->
-    <?php
-    	$loop = new WP_Query(
-			array(
-				// 'category_name' => 'Featured',
-				'post_type' => 'article',
-				'posts_per_page' => 6,
-			));
-
-    	while ($loop->have_posts()):
-    		$loop->the_post();
-    		$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'featured');
+ 	<?php
+ 		$issues = get_terms('issue', array( 'hide_empty' => 0 ));
+ 		if (!empty($issues)):
+	 		$newest_issue = false;
+	 		$newest_date = false;
+	 		foreach ($issues as $issue) {
+	 			if (!$newest_issue) {
+	 				$newest_issue = $issue;
+	 				$newest_date = strtotime(get_term_meta($issue->term_id, 'date', true));
+	 				continue;
+	 			}
+	 			$date = strtotime(get_term_meta($issue->term_id, 'date', true));
+	 			if ($date > $newest_date) {
+	 				$newest_date = $date;
+	 				$newest_issue = $issue;
+	 			}
+	 		}
 	?>
 
-	    <div class="featured-article"><a href="<?php echo get_the_permalink(); ?>">
-	 	  <div class="featured-article-image shadow-inset-sm" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
-	 	  <div class="featured-article-info">
+	 	<div class="issue-wrapper">
+	 	  <div class="issue-cover">
 	 	  	
-	 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
-			<div class="article-title"> <?php the_title(); ?> </div>
-			<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
-			<div class="article-excerpt"> 
-				<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
-			</div>
+	 	  	<div class="issue-image shadow-inset"
+	 	  		style="background-image: url('<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>');">
+	 	  	</div>
+	 	  	<div class="issue-image-blur">
+	 	  	  <img width="344" height="424" src="<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>" />
+	 	  	</div>
+	 	  	<div class="issue-title-overlay"></div>
+	 	  	<div class="issue-title">
+	 	  	  <div class="issue-title-text"> <?php echo $newest_issue->name; ?> </div>
+	 	  	  <div class="issue-title-border"></div>
+	 	  	</div>
+	 	  
+	 	  </div>
+	 	  <div class="issue-articles">
+	 	  	<?php
+	 	  		$loop = new WP_Query(
+	 	  			array(
+						'post_type' => 'article',
+						'posts_per_page' => 3,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'issue',
+								'field' => 'term_id',
+								'terms' => $newest_issue->term_id,
+								'operator' => 'IN',
+							),
+						)
+					));
+	 	  		while ($loop->have_posts()):
+	 	  			$loop->the_post();
+	 	  	?>
+	 	  	  
+	 	  	  <div class="issue-article">
+	 	  	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
+				<div class="article-title"> <?php the_title(); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
+				<div class="article-excerpt"> 
+					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
+				</div>
+	 	  	  </div>
+	 	  	
+	 	  	<?php endwhile; ?>
 
 	 	  </div>
-	 	</a></div>
+	 	</div>
 
-     <?php endwhile; ?>
+    <?php endif; ?>
 
-     </div>
+
+    <!-- Multimedia -->
+ 	<div class="divider">
+ 	  <div class="divider-text">Multimedia</div>
+ 	  <div class="divider-border"></div>
+ 	</div>
 
   </div>
 </div>

@@ -62,26 +62,26 @@
 
 			<div id="navbar-link-wrapper">
 			  <div id="navbar-link-subwrapper">
-			    <a href="/about/" class="navbar-link" style="width:98px;">
+			    <a href="/about/" class="navbar-link">
 			      <span class="navbar-link-text">About</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('science')->term_id); ?>" class="navbar-link" style="width:108px;">
+			    <a href="<?php echo get_category_link(get_cat_ID('Science')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Science</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('arts')->term_id); ?>" class="navbar-link" style="width:87px;">
+			    <a href="<?php echo get_category_link(get_cat_ID('Arts')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Arts</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('narrative')->term_id); ?>" class="navbar-link" style="width:119px;">
+			    <a href="<?php echo get_category_link(get_cat_ID('Narrative')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Narrative</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('politics')->term_id); ?>" class="navbar-link" style="width:108px;">
+			    <a href="<?php echo get_category_link(get_cat_ID('Politics')); ?>" class="navbar-link">
 			      <span class="navbar-link-text">Politics</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('features')->term_id); ?>" class="navbar-link" style="width:113px;">
-			      <span class="navbar-link-text">Features</span>
+			    <a href="<?php echo get_category_link(get_cat_ID('Sports')); ?>" class="navbar-link">
+			      <span class="navbar-link-text">Sports</span>
 			    </a>
-			    <a href="<?php echo get_category_link(get_category_by_slug('thought-reason')->term_id); ?>" class="navbar-link" style="width:187px;">
-			      <span class="navbar-link-text">Thought & Reason</span>
+			    <a href="<?php echo get_category_link(get_cat_ID('Media')); ?>" class="navbar-link">
+			      <span class="navbar-link-text">Media</span>
 			    </a>
 			    <span id="navbar-search" data-expanded="false">
 				  <form id="navbar-search-form" action="/" method="get">

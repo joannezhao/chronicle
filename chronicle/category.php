@@ -10,6 +10,7 @@
 
 	get_header();
 	$category = $wp_query->get_queried_object();
+	$page = (get_query_var('page') ? get_query_var('page') : 1);
 ?>
 
 <!--Parallax images-->
@@ -23,8 +24,9 @@
 		style="background-image:url('<?php echo z_taxonomy_image_url($category->term_id, 'large'); ?>'); <?php
 		  if ($category->slug == "narrative") { echo "background-position: 50% 100%;"; }
 		  elseif ($category->slug == "sports") { echo "background-position: 50% 100%;"; }
-		  elseif ($category->slug == "arts") { echo "background-position: 50% 30%;"; }
-		  elseif ($category->slug == "science") { echo "background-position: 50% 90%;"; } ?>"
+		  elseif ($category->slug == "arts") { echo "background-position: 50% 70%;"; }
+		  elseif ($category->slug == "science") { echo "background-position: 50% 90%;"; }
+		  elseif ($category->slug == "politics") { echo "background-position: 50% 60%;"; } ?>"
 		data-bottom-top="transform: translate3d(0px, -300px, 0px);"
 		data-top-bottom="transform: translate3d(0px, 220px, 0px);">
 	</div>
@@ -58,6 +60,9 @@
 						'category_name' => $category->name,
 						'post_type' => 'article',
 						'posts_per_page' => 5,
+						'paged' => $page,
+						'orderby' => 'modified',
+						'order' => 'DESC',
 					));
 
 				$count = 0;
@@ -81,6 +86,19 @@
 		 	</div></a>
 
 		    <?php $count++; endwhile; ?>
+		  </div>
+
+		  <div class="pagination-wrapper">
+		    <?php echo paginate_links(
+		    	array(
+					'base'         => '/category/' . $category->slug . '/?page=%#%',
+					'format'       => 'page=%#%',
+					'current'       => max(1, get_query_var('page')),
+					'total'         => $loop->max_num_pages,
+					'mid_size'      => 3,
+					'type'          => 'plain',
+				));
+			?>
 		  </div>
 		</div>
 

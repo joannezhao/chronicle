@@ -14,7 +14,7 @@ get_header();
     
   <div class="parallax-image parallax-image-full"
     data-anchor-target="#gap0"
-    style="background-image:url('<?php bloginfo('stylesheet_directory'); ?>/static/images/baker.jpg'); background-position:50% 100%;"
+    style="background-image:url('http://thedartmouthchronicle.com/wp-content/uploads/2014/10/Team-1-copy.jpg'); background-position:50% 20%;"
     data-bottom-top="transform: translate3d(0px, -300px, 0px);"
     data-top-bottom="transform: translate3d(0px, 220px, 0px);">
   </div>

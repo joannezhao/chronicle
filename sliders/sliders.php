@@ -24,7 +24,7 @@
 			'edit-tags.php?taxonomy=slider&post_type=article',
 			'',
 			'',
-			10
+			9
 		);
 		remove_submenu_page('edit.php?post_type=article', 'edit-tags.php?taxonomy=slider&amp;post_type=article');
 	}

@@ -22,13 +22,16 @@
 	padding-top: 20px;
 	overflow: hidden;
 }
+.category-page #content-left {
+	padding-bottom: 30px;
+}
 
 .category-wrapper {
 	float: left;
 	width: 100%;
-	margin-bottom: 60px;
+	margin-bottom: 10px;
 	padding: 0 20px;
-	border-bottom: solid 1px #CCC;
+	/*border-bottom: solid 1px #CCC;*/
 	/*border-top: solid 1px #CCC;*/
 	/*background-color: #ECECEC;*/
 }

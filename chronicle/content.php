@@ -13,7 +13,7 @@
 <?php $the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'full'); ?>
 
 <!--Parallax images-->
-<div class="wrapper-parallax-image wrapper-parallax-image-lg"
+<!-- <div class="wrapper-parallax-image wrapper-parallax-image-lg"
     data-anchor-target="#gap0"
 	data-bottom-top="transform: translate3d(0px, 1200px, 0px);"
 	data-top-bottom="transform: translate3d(0px, 0px, 0px);">
@@ -24,9 +24,10 @@
 		data-bottom-top="transform: translate3d(0px, -400px, 0px);"
 		data-top-bottom="transform: translate3d(0px, 320px, 0px);">
 	</div>
-</div>
+</div> -->
 
 <div class="article" data-id="<?php the_ID(); ?>">
+  <div class="article-top-wrapper">
     <div class="page-center">
 	  
 	  <div class="article-category-wrapper">
@@ -43,10 +44,18 @@
 	  <?php endif; ?>
 	  <div class="article-author">By <?php echo get_author(get_the_ID(), true); ?></div>
 	
+    </div>
   </div>
 
-  <div class="gap gap-lg shadow-inset-sm" id="gap0"></div>
-  <div class="article-content-spacer"></div>
+  <div class="article-mid-wrapper">
+    <a href="<?php echo $the_url[0]; ?>">
+      <div class="article-image shadow-inset-sm" style="
+    	background-image:url('<?php echo $the_url[0]; ?>');
+    	background-position:50% <?php echo get_image_position(get_the_ID()); ?>;">
+      </div>
+    </a>
+    <div class="article-content-spacer-bottom"></div>
+  </div>
 
 	<?php if ( is_search() ) : ?>
 		<div class="article-summary">

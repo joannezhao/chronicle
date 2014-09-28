@@ -14,6 +14,9 @@
 /*
 /****************************/
 
+.site {
+	background-color: #F6F6F6;
+}
 .featured-wrapper {
 	float: left;
 	width: 680px;
@@ -23,6 +26,8 @@
 	float: left;
 	width: 360px;
 	height: 300px;
+	background-size: cover;
+	background-position: center center;
 }
 .featured-article {
 	float: left;
@@ -32,11 +37,16 @@
 	border-bottom: solid 1px #CCC;
 	background-color: #F0F0F0;
 	box-shadow: inset 0px 11px 8px -10px #DDD;
+	text-align: center;
+	display: table;
+}
+.featured-article-vertical-center {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .featured-article .article-category {
 	width: 100%;
-	margin-top: 70px;
 	font-family: "Lato", sans-serif;
 	font-size: 12px;
 	font-weight: 300;
@@ -53,7 +63,7 @@
 	color: #333;
 }
 .featured-article .article-author {
-	margin-top: -4px;
+	margin-top: 0px;
 	width: 100%;
 	font-family: "Lato", sans-serif;
 	font-size: 10px;
@@ -84,10 +94,13 @@
 	float: left;
 	width: 220px;
 	margin-left: 20px;
-	border-top: solid 1px #CCC;
-	border-bottom: solid 1px #CCC;
-	background-color: #F0F0F0;
-	box-shadow: inset 0px 11px 8px -10px #DDD;
+	/*border-top: solid 1px #CCC;*/
+	/*border-bottom: solid 1px #CCC;*/
+	/*background-color: #F0F0F0;*/
+	/*box-shadow: inset 0px 11px 8px -10px #DDD;*/
+	border: solid 1px #DDD;
+	border-radius: 4px;
+	background-color: #FAFAFA;
 }
 .popular-article {
 	width: 200px;
@@ -104,7 +117,7 @@
 .popular-article .article-category {
 	width: 100%;
 	font-family: "Lato", sans-serif;
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: 300;
 	letter-spacing: 1px;
 	color: #6b8a1c;
@@ -113,7 +126,7 @@
 	width: 100%;
 	margin-top: 2px;
 	font-family: "Lora", serif;
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 300;
 	color: #333;
 }
@@ -121,7 +134,7 @@
 	margin-top: 2px;
 	width: 100%;
 	font-family: "Lato", sans-serif;
-	font-size: 10px;
+	font-size: 9px;
 	font-weight: 900;
 	letter-spacing: 1px;
 	color: #333;
@@ -138,10 +151,14 @@
 	float: left;
 	width: 220px;
 	margin-left: 20px;
-	border-top: solid 1px #CCC;
+/*	border-top: solid 1px #CCC;
 	border-bottom: solid 1px #CCC;
 	background-color: #F0F0F0;
-	box-shadow: inset 0px 11px 8px -10px #DDD;
+	box-shadow: inset 0px 11px 8px -10px #DDD;*/
+	border: solid 1px #DDD;
+	border-radius: 4px;
+	background-color: #FAFAFA;
+
 }
 
 .widget_tp_widget_recent_tweets h2.widgettitle {
@@ -202,9 +219,11 @@
 	position: absolute;
 	top: 0px;
 	width: 340px;
-	height: 360px;
+	height: 392px;
 	overflow: hidden;
 	z-index: 1000;
+	background-size: cover;
+	background-position: center center;
 }
 .issue-image-blur {
 	position: absolute;
@@ -257,14 +276,20 @@
 }
 .issue-article {
 	width: 520px;
+	height: 130px;
 	margin-left: 20px;
-	padding: 18px 0;
 	border-bottom: solid 1px #CCC;
 }
 .issue-article:last-of-type {
 	border-bottom: none;
 	padding-bottom: 17px;
 }
+.issue-article a {
+	display: block;
+	height: 130px;
+	padding: 18px 0;
+}
+
 .issue-article .article-category {
 	width: 100%;
 	font-family: "Lato", sans-serif;
@@ -296,5 +321,85 @@
 	font-family: "Lora", serif;
 	font-weight: 300;
 	font-size: 14px;
+	color: #333;
+}
+
+
+
+/****************************
+/*
+/*	Extra Stories Styles
+/*
+/****************************/
+
+.section-title-wrapper {
+	width: 100%;
+	text-align: center;
+}
+.section-title {
+	display: inline-block;
+	font-family: "Lato", sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #333;
+	border-bottom: solid 1px #333;
+	padding-bottom: -5px;
+}
+.extra-wrapper {
+	margin: 20px 10px;
+}
+
+.extra-story {
+	float: left;
+	width: 300px;
+	margin: 20px 5px;
+}
+.extra-story-image {
+	width: 100%;
+	height: 220px;
+}
+.extra-story-info {
+	width: 100%;
+	height: 140px;
+}
+
+.extra-story .article-category {
+	width: 100%;
+	margin-top: 10px;
+	font-family: "Lato", sans-serif;
+	font-size: 12px;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #6b8a1c;
+}
+.extra-story .article-title {
+	width: 100%;
+	font-family: "Lora", serif;
+	font-size: 22px;
+	font-weight: 300;
+	text-align: center;
+	color: #333;
+}
+.extra-story .article-author {
+	margin-top: 0px;
+	width: 100%;
+	font-family: "Lato", sans-serif;
+	font-size: 10px;
+	font-weight: 900;
+	text-align: center;
+	letter-spacing: 1px;
+	color: #333;
+}
+.extra-story .article-excerpt {
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	font-family: "Lora", serif;
+	font-weight: 300;
+	font-size: 14px;
+	text-align: center;
 	color: #333;
 }

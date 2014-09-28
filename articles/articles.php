@@ -18,6 +18,8 @@
 
 	add_action('add_meta_boxes', 'add_author_meta_box');
 	add_action('save_post', 'save_author_meta_box_data');
+	add_action('add_meta_boxes', 'add_image_position_meta_box');
+	add_action('save_post', 'save_image_position_meta_box_data');
 	add_filter( 'image_size_names_choose', 'add_parallax_image_size' );
 
 	function add_parallax_image_size( $sizes ) {
@@ -110,6 +112,57 @@
 	}
 
 
+	// Functions to add a meta box for the position of the featured image
+	function add_image_position_meta_box() {
+		add_meta_box(
+			'image_position_meta_box',
+			'Image Position',
+			'get_image_position_meta_box',
+			'article',
+			'side',
+			'core'
+		);
+	}
+
+	function get_image_position_meta_box($article) {
+		// Add an nonce field so we can check for it later.
+		wp_nonce_field( 'image_position_meta_box', 'image_position_meta_box_nonce' );
+
+		$old_position = get_post_meta( $article->ID, 'image_position', true );
+
+		echo '<input type="text" id="image_position_field" name="image_position_field" value="' . esc_attr( $old_position ) . '" size="25" />';
+		echo '<p> If you enter a number between 0 and 100, it will change which part of the featured image gets cropped off on the article page. Defaults to 50. </p>';
+	}
+
+	function save_image_position_meta_box_data($article_id) {
+		if (!isset( $_POST['image_position_meta_box_nonce'] )) return;
+		if (!wp_verify_nonce($_POST['image_position_meta_box_nonce'], 'image_position_meta_box')) return;
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+		if (!current_user_can('edit_article', $article_id)) return;
+		if (!isset( $_POST['image_position_field'] )) return;
+		if (!is_numeric($_POST['image_position_field'])) return;
+
+		$image_position = intval( $_POST['image_position_field'] );
+		if ($image_position < 0 || $image_position > 100) return;
+
+		update_post_meta($article_id, 'image_position', strval($image_position));
+	}
+
+	function get_image_position($postID = null) {
+		if (empty($postID)) {
+	    	if (!empty($post)) {
+		        global $post;
+		        $postID = $post->ID;
+		    }
+		    else return;
+	    }
+
+		$position = get_post_meta($postID, 'image_position', true);
+		return (strlen($position) > 0 ? $position . '%' : '50%');
+	}
+
+
+
 	// Functions to add a meta box for the author
 	function add_author_meta_box() {
 		add_meta_box(
@@ -164,16 +217,16 @@
 
 	// Functions to get article information
 	function get_the_first_category($link = false) {
-		$the_categories = get_the_category();
+		$the_categories = get_the_category(get_the_ID());
 		foreach ($the_categories as $key => $value) {
-			if ($value->name == "Featured") {
+			if ($value->name == "Featured" || $value->name == "More Stories" || $value->name == "Issue Theme") {
 				unset($the_categories[$key]);
 			}
 		}
 		$the_categories = array_values($the_categories);
 		
 		if (count($the_categories) > 0) {
-			return ($link ? '<a class="category-link" href="' . get_category_link($the_categories) . '">' . current($the_categories)->name . '</a>' :
+			return ($link ? '<a class="category-link" href="' . get_category_link(current($the_categories)) . '">' . current($the_categories)->name . '</a>' :
 				strtoupper(current($the_categories)->name)); 
 		}
 		else {
@@ -224,7 +277,7 @@
 				'public' => true,
 				'has_archive' => true,
 				'rewrite' => array('slug' => 'articles'),
-				'menu_position' => 5,
+				'menu_position' => 4,
 			)
 		);
 	}

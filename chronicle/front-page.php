@@ -19,8 +19,9 @@
 	get_header();
 ?>
 
-<div class="page-center">
-  <div id="content" class="content">
+<div id="content" class="content front-page">
+<div id="content-top">
+  <div class="page-center">
   	<div id="content-left">
 
 	    <!-- Slider -->
@@ -40,14 +41,14 @@
 	    		$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'featured');
 		?>
 
-			<div class="divider">
+			<div class="divider" style="margin-top:0">
 		      <div class="divider-text">Featured Article</div>
 		      <div class="divider-border"></div>
 		    </div>
 
 		    <div class="featured-wrapper"><a href="<?php echo get_the_permalink(); ?>">
 		 	  <div class="featured-image shadow-inset" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
-		 	  <div class="featured-article">
+		 	  <div class="featured-article"><div class="featured-article-vertical-center">
 		 	  	
 		 	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
@@ -56,7 +57,7 @@
 					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
 				</div>
 
-		 	  </div>
+		 	  </div></div>
 		 	</a></div>
 
 	     <?php endif; ?>
@@ -70,7 +71,7 @@
 	    <div class="divider-border"></div>
 	  </div>
 
-	  <div class="popular-wrapper">
+	  <div class="popular-wrapper front-page">
 	    <?php
 	     	$loop = get_popular_articles(4);
 
@@ -107,7 +108,7 @@
 			$instance['accesstoken'] = '2770409635-JZn74iNTlyqvPJu51BhVeUwF48fDJYXoxt51pVr';
 			$instance['accesstokensecret'] = 'a01WCjOSwASNuc8JcwUpHCqKooxtoTkIUDsR969867NMR';
 			$instance['cachetime'] = '2';
-			$instance['username'] = 'dchronicle2014';
+			$instance['username'] = 'dartmouth';
 			$instance['tweetstoshow'] = '3';
 			$instance['excludereplies'] = 'true';
 
@@ -150,14 +151,14 @@
 	 	  	<div class="issue-image shadow-inset"
 	 	  		style="background-image: url('<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>');">
 	 	  	</div>
-	 	  	<div class="issue-image-blur">
+	 	  	<!-- <div class="issue-image-blur">
 	 	  	  <img width="344" height="424" src="<?php echo z_taxonomy_image_url($newest_issue->term_id, 'issue'); ?>" />
 	 	  	</div>
 	 	  	<div class="issue-title-overlay"></div>
 	 	  	<div class="issue-title">
 	 	  	  <div class="issue-title-text"> <?php echo $newest_issue->name; ?> </div>
 	 	  	  <div class="issue-title-border"></div>
-	 	  	</div>
+	 	  	</div> -->
 	 	  
 	 	  </div>
 	 	  <div class="issue-articles">
@@ -166,6 +167,9 @@
 	 	  			array(
 						'post_type' => 'article',
 						'posts_per_page' => 3,
+						'category_name' => 'Issue Theme',
+						'order_by' => 'modified',
+						'order' => 'DESC',
 						'tax_query' => array(
 							array(
 								'taxonomy' => 'issue',
@@ -179,14 +183,14 @@
 	 	  			$loop->the_post();
 	 	  	?>
 	 	  	  
-	 	  	  <div class="issue-article">
+	 	  	  <div class="issue-article"><a href="<?php echo get_the_permalink(); ?>">
 	 	  	  	<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
 				<div class="article-title"> <?php the_title(); ?> </div>
 				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
 				<div class="article-excerpt"> 
 					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
 				</div>
-	 	  	  </div>
+	 	  	  </a></div>
 	 	  	
 	 	  	<?php endwhile; ?>
 
@@ -195,12 +199,48 @@
 
     <?php endif; ?>
 
+    </div>
+    </div><!-- #content-top -->
 
-    <!-- Multimedia -->
- 	<div class="divider">
- 	  <div class="divider-text">Multimedia</div>
- 	  <div class="divider-border"></div>
- 	</div>
+
+
+	<!-- More Stories -->
+	<div id="content-bottom">
+	<div class="page-center">
+	  <div class="section-title-wrapper"><div class="section-title">More Stories</div></div>
+	  <div class="extra-wrapper">
+	    
+	    <?php
+	    	$loop = new WP_Query(
+				array(
+					'category_name' => 'More Stories',
+					'post_type' => 'article',
+					'posts_per_page' => 3,
+					'order_by' => 'modified',
+					'order' => 'DESC',
+				));
+
+	    	while ($loop->have_posts()):
+	    		$loop->the_post();
+	    		$the_url = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), 'featured');
+		?>
+
+			<div class="extra-story"><a href="<?php echo get_the_permalink(); ?>">
+		 	  <div class="extra-story-image shadow-inset-sm" style="background-image: url('<?php echo $the_url[0]; ?>');"></div>
+		 	  <div class="extra-story-info">
+				<div class="article-category"> <?php echo get_the_first_category(); ?> </div>
+				<div class="article-title"> <?php the_title(); ?> </div>
+				<div class="article-author">BY <?php echo strtoupper(get_author(get_the_ID())); ?> </div>
+				<div class="article-excerpt"> 
+					<?php echo (strlen(get_the_excerpt()) > 100 ? explode("\n", wordwrap(get_the_excerpt(), 100))[0] . '...' : get_the_excerpt()); ?>
+				</div>
+			  </div>
+		 	</a></div>
+
+		<?php endwhile; ?>
+	  
+	  </div>
+	</div><!-- #content-bottom -->
 
   </div>
 </div>

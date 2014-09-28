@@ -14,9 +14,33 @@
 /*
 /****************************/
 
+.article-top-wrapper {
+	position: relative;
+	width: 100%;
+	background-color: #F6F6F6;
+	z-index: 10;
+	padding-bottom: 30px;
+}
+.article-mid-wrapper {
+	width: 100%;
+	background-color: #F6F6F6;
+}
+.article-bottom-wrapper {
+	width: 100%;
+	background-color: #FFF;
+}
+
+.article .article-mid-wrapper .article-image {
+	width: 960px;
+	height: 380px;
+	margin: 0 auto;
+	background-size: cover;
+	background-position: center center;
+}
+
 .article .article-category-wrapper {
 	width: 960px;
-	margin-top: 20px;
+	padding-top: 20px;
 	text-align: center;
 }
 
@@ -90,11 +114,6 @@
 	text-align: center;
 	text-transform: uppercase;
 	color: #555;
-
-	position: relative;
-	background-color: #F6F6F6;
-	padding-bottom: 30px;
-	z-index: 10;
 }
 .article .article-author a {
 	color: #555;
@@ -103,18 +122,26 @@
 	color: #555;
 	text-decoration: underline;
 }
-.article .article-content-spacer {
+.article .article-content-spacer-top {
 	position: relative;
 	width: 100%;
-	height: 80px;
+	height: 20px;
 	background-color: #F6F6F6;
 	z-index: 10;
+}
+.article .article-content-spacer-bottom {
+	position: relative;
+	width: 100%;
+	height: 60px;
+	background-color: #F6F6F6;
+	z-index: 10;
+	border-bottom: solid 1px #DDD;
 }
 
 .article .article-content-wrapper {
 	width: 100%;
 	padding-top: 40px;
-	background-color: #ECECEC;
+	background-color: #FFFFFF;
 }
 .article .article-content {
 	width: 660px;
@@ -130,7 +157,7 @@
 	position: relative;
 	margin-bottom: 0;
 	padding-bottom: 24px;
-	background-color: #ECECEC;
+	background-color: #FFFFFF;
 	font-family: "Lora", serif;
 	font-size: 16px;
 	font-weight: 300;
